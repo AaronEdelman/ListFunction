@@ -10,7 +10,6 @@ namespace ListClass
     {
         static void Main(string[] args)
         {
-            List list = new List();
         }
     }
 }
