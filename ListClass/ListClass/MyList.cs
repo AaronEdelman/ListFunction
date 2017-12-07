@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ListClass
 {
-    public class MyList<T> : System.Collections.IEnumerable
+    public class MyList<T>
     {
         T[] myArray;
         int arrayCapacity = 0;
@@ -42,12 +42,6 @@ namespace ListClass
             Array.Resize(ref myArray, arrayCapacity);
             myArray[(myArray.Length - 1)] = value;
         }
-
-        public IEnumerator GetEnumerator()
-        {
-            throw new NotImplementedException();
-        }
-
         //remove object from array
         public void Remove(T value)
         {
@@ -66,7 +60,11 @@ namespace ListClass
         }
         //override ToString method
         //override '+' to add two instances of the list class together (ie 1+1 = 2 & "hello" + "world" = "hello world")
-        //override '-' to add two instances of the list class together
+        public static MyList<T> operator +(MyList<T> listOne, MyList<T> listTwo)
+        {
+
+        }
+        //override '-' to subtract two instances of the list class together
         //create .count for list class
         public int Count
         {

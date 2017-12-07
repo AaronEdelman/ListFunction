@@ -149,5 +149,151 @@ namespace ListClassTesting
             //Assert
             Assert.AreEqual(3, list.Count);
         }
+        [TestMethod]
+        public void Plus_StringLists_PositiveCount()
+        {
+            //Arrange
+            MyList<string> list1 = new MyList<string>();
+            MyList<string> list2 = new MyList<string>();
+            list1.Add("foo");
+            list2.Add("bar");
+            //Act
+            MyList<string> list3 = list1 + list2;
+            //Assert
+            Assert.AreEqual(2, list3.Count);
+        }
+        [TestMethod]
+        public void Plus_StringLists_String()
+        {
+            //Arrange
+            MyList<string> list1 = new MyList<string>();
+            MyList<string> list2 = new MyList<string>();
+            list1.Add("foo");
+            list2.Add("bar");
+            //Act
+            MyList<string> list3 = list1 + list2;
+            //Assert
+            Assert.AreEqual("bar", list3[1]);
+        }
+        [TestMethod]
+        public void Plus_IntLists_PositiveCount()
+        {
+            //Arrange
+            MyList<int> list1 = new MyList<int>();
+            MyList<int> list2 = new MyList<int>();
+            list1.Add(2);
+            list2.Add(1);
+            //Act
+            MyList<int> list3 = list1 + list2;
+            //Assert
+            Assert.AreEqual(2, list3.Count);
+        }
+        [TestMethod]
+        public void Plus_IntLists_PositiveInt()
+        {
+            //Arrange
+            MyList<int> list1 = new MyList<int>();
+            MyList<int> list2 = new MyList<int>();
+            list1.Add(2);
+            list2.Add(1);
+            //Act
+            MyList<int> list3 = list1 + list2;
+            //Assert
+            Assert.AreEqual(2, list3[0]);
+        }
+        [TestMethod]
+        [ExpectedException(typeof(System.DataMisalignedException))]
+        public void Plus_IntListStringList_Exception()
+        {
+            //Arrange
+            MyList<int> list1 = new MyList<int>();
+            MyList<string> list2 = new MyList<string>();
+            list1.Add(2);
+            list2.Add("foo");
+            //Act
+            MyList<int> list3 = list1 + list2;
+            //Assert
+        }
+        [TestMethod]
+        public void Minus_StringLists_ShorterList()
+        {
+            //Arrange
+            MyList<string> list1 = new MyList<string>();
+            MyList<string> list2 = new MyList<string>();
+            list1.Add("foo");
+            list1.Add("bar");
+            list2.Add("bar");
+            //Act
+            MyList<string> list3 = list1 - list2;
+            //Assert
+            Assert.AreEqual(1, list3.Count);
+        }
+        [TestMethod]
+        public void Minus_StringLists_NoChange()
+        {
+            //Arrange
+            MyList<string> list1 = new MyList<string>();
+            MyList<string> list2 = new MyList<string>();
+            list1.Add("foo");
+            list1.Add("bar");
+            list2.Add("hello");
+            //Act
+            MyList<string> list3 = list1 - list2;
+            //Assert
+            Assert.AreEqual(2, list3.Count);
+        }
+        [TestMethod]
+        public void Minus_StringLists_String()
+        {
+            //Arrange
+            MyList<string> list1 = new MyList<string>();
+            MyList<string> list2 = new MyList<string>();
+            list1.Add("foo");
+            list1.Add("bar");
+            list2.Add("foo");
+            //Act
+            MyList<string> list3 = list1 - list2;
+            //Assert
+            Assert.AreEqual("bar", list3[0]);
+        }
+        public void Minus_IntLists_Int()
+        {
+            //Arrange
+            MyList<int> list1 = new MyList<int>();
+            MyList<int> list2 = new MyList<int>();
+            list1.Add(1);
+            list1.Add(1);
+            list2.Add(3);
+            //Act
+            MyList<string> list3 = list1 - list2;
+            //Assert
+            Assert.AreEqual(1, list3[0]);
+        }
+        [TestMethod]
+        public void Minus_IntLists_PositiveCount()
+        {
+            //Arrange
+            MyList<int> list1 = new MyList<int>();
+            MyList<int> list2 = new MyList<int>();
+            list1.Add(2);
+            list2.Add(1);
+            //Act
+            MyList<int> list3 = list1 - list2;
+            //Assert
+            Assert.AreEqual(2, list3.Count);
+        }
+        [TestMethod]
+        [ExpectedException(typeof(System.DataMisalignedException))]
+        public void Minus_IntListStringList_Exception()
+        {
+            //Arrange
+            MyList<int> list1 = new MyList<int>();
+            MyList<string> list2 = new MyList<string>();
+            list1.Add(2);
+            list2.Add("foo");
+            //Act
+            MyList<int> list3 = list1 - list2;
+            //Assert
+        }
     }
 }
