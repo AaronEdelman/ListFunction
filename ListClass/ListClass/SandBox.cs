@@ -8,13 +8,19 @@ namespace ListClass
 {
     class SandBox
     {
-        List<string> list1 = new List<string>() { "foo", "Bar", "hello" };
-        List<string> list2 = new List<string>() { "foo", "Bar" };
+        MyList<string> list1 = new MyList<string>();
+        MyList<string> list2 = new MyList<string>();
 
         public void Subtract()
         {
-            List<string> list3 = list1 + list2;
+            list1.Add("foo");
+            list1.Add("bar");
+            list2.Add("bar");
+            MyList<string> list3 = list1 - list2;
+            Console.WriteLine("hello");
+            Console.ReadLine();
         }
+
 
     }
 }

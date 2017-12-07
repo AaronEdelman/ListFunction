@@ -59,12 +59,38 @@ namespace ListClass
             }
         }
         //override ToString method
-        //override '+' to add two instances of the list class together (ie 1+1 = 2 & "hello" + "world" = "hello world")
+        //override '+' to add two instances of the list class together ("hello" + "world" = "hello world" && 1 + 1 = 1,1)
         public static MyList<T> operator +(MyList<T> listOne, MyList<T> listTwo)
         {
-
+            try
+            {
+                for (int i = 0; i < listTwo.Count; i++)
+                {
+                    listOne.Add(listTwo[i]);
+                }
+                return listOne;
+            }
+            catch
+            {
+                throw new Exception("MyString data types must match");
+            }
+        
         }
         //override '-' to subtract two instances of the list class together
+        public static MyList<T> operator -(MyList<T> listOne, MyList<T> listTwo)
+        {
+                for (int i = 0; i < listOne.Count; i++)
+                {
+                    for (int j = 0; j < listTwo.Count; j++)
+                    {
+                        if (listOne[i].Equals(listTwo[j]))
+                        {
+                            listOne.Remove(listOne[i]);
+                        }
+                    }
+                }
+                return listOne;
+        }
         //create .count for list class
         public int Count
         {

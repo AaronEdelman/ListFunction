@@ -60,7 +60,7 @@ namespace ListClassTesting
             //Act
             list.Add(number);
             list.Add(number);
-            //Assert.AreEqual(2, list.Count);
+            Assert.AreEqual(2, list.Count);
         }
         [TestMethod]
         public void Add_String_RetrieveString()
@@ -202,19 +202,6 @@ namespace ListClassTesting
             Assert.AreEqual(2, list3[0]);
         }
         [TestMethod]
-        [ExpectedException(typeof(System.DataMisalignedException))]
-        public void Plus_IntListStringList_Exception()
-        {
-            //Arrange
-            MyList<int> list1 = new MyList<int>();
-            MyList<string> list2 = new MyList<string>();
-            list1.Add(2);
-            list2.Add("foo");
-            //Act
-            MyList<int> list3 = list1 + list2;
-            //Assert
-        }
-        [TestMethod]
         public void Minus_StringLists_ShorterList()
         {
             //Arrange
@@ -262,10 +249,10 @@ namespace ListClassTesting
             MyList<int> list1 = new MyList<int>();
             MyList<int> list2 = new MyList<int>();
             list1.Add(1);
-            list1.Add(1);
+            list1.Add(2);
             list2.Add(3);
             //Act
-            MyList<string> list3 = list1 - list2;
+            MyList<int> list3 = list1 - list2;
             //Assert
             Assert.AreEqual(1, list3[0]);
         }
@@ -280,20 +267,7 @@ namespace ListClassTesting
             //Act
             MyList<int> list3 = list1 - list2;
             //Assert
-            Assert.AreEqual(2, list3.Count);
-        }
-        [TestMethod]
-        [ExpectedException(typeof(System.DataMisalignedException))]
-        public void Minus_IntListStringList_Exception()
-        {
-            //Arrange
-            MyList<int> list1 = new MyList<int>();
-            MyList<string> list2 = new MyList<string>();
-            list1.Add(2);
-            list2.Add("foo");
-            //Act
-            MyList<int> list3 = list1 - list2;
-            //Assert
+            Assert.AreEqual(1, list3.Count);
         }
     }
 }
