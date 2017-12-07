@@ -102,5 +102,9 @@ namespace ListClass
         }
         //create .zip that will combine two int lists and organize by value
         //create .sort for list class (cannot use Array.Sort)
+        public void Sort()
+        {
+
+        }
     }
 }

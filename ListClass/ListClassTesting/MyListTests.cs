@@ -269,5 +269,35 @@ namespace ListClassTesting
             //Assert
             Assert.AreEqual(1, list3.Count);
         }
+        [TestMethod]
+        public void Zip_StringLists_LargerList()
+        {
+            //Arrange
+            MyList<string> list1 = new MyList<string>();
+            MyList<string> list2 = new MyList<string>();
+            list1.Add("foo");
+            list1.Add("hello");
+            list2.Add("bar");
+            list2.Add("world");
+            //Act
+            MyList<string>list3 = list1.Zip(list2);
+            //Assert
+            Assert.AreEqual(4, list3.Count);
+        }
+        [TestMethod]
+        public void Zip_StringLists_string()
+        {
+            //Arrange
+            MyList<string> list1 = new MyList<string>();
+            MyList<string> list2 = new MyList<string>();
+            list1.Add("foo");
+            list1.Add("hello");
+            list2.Add("bar");
+            list2.Add("world");
+            //Act
+            MyList<string> list3 = list1.Zip(list2);
+            //Assert
+            Assert.AreEqual("bar", list3[1]);
+        }
     }
 }
