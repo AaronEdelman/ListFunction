@@ -299,5 +299,72 @@ namespace ListClassTesting
             //Assert
             Assert.AreEqual("bar", list3[1]);
         }
+        [TestMethod]
+        public void IEnumerator_IntList_IntsIsOne()
+        {
+            //Arrange
+            MyList<int> list = new MyList<int>();
+            list.Add(1);
+            list.Add(1);
+            //Act
+            foreach(int element in list)
+            {
+                //Assert
+                Assert.AreEqual(1, element);
+            }
+        }
+        [TestMethod]
+        public void IEnumerator_StringList_IsNotNull()
+        {
+            //Arrange
+            MyList<int> list = new MyList<int>();
+            list.Add(1);
+            list.Add(1);
+            //Act
+            foreach (int element in list)
+            {
+                //Assert
+                Assert.IsNotNull(element);
+            }
+        }
+        [TestMethod]
+        public void ToString_StringList_String()
+        {
+            //Arrange
+            MyList<string> list = new MyList<string>();
+            list.Add("foo");
+            list.Add("foo");
+            list.Add("foo");
+            //Act
+            string foo = list.ToString();
+            //Assert
+            Assert.AreEqual("foofoofoo", foo);
+        }
+        [TestMethod]
+        public void ToString_IntList_String()
+        {
+            //Arrange
+            MyList<int> list = new MyList<int>();
+            list.Add(1);
+            list.Add(2);
+            list.Add(3);
+            //Act
+            string foo = list.ToString();
+            //Assert
+            Assert.AreEqual("123", foo);
+        }
+        [TestMethod]
+        public void ToString_StringList_StringList()
+        {
+            //Arrange
+            MyList<string> list = new MyList<string>();
+            list.Add("foo");
+            list.Add("bar");
+            list.Add("foo");
+            //Act
+            string foo = list.ToString();
+            //Assert
+            Assert.AreEqual(3, list.Count);
+        }
     }
 }

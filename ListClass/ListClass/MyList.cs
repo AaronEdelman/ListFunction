@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ListClass
 {
-    public class MyList<T> : IEnumerable//<T>
+    public class MyList<T> : IEnumerable
     {
         T[] myArray;
         int arrayCapacity = 0;
@@ -59,7 +59,16 @@ namespace ListClass
             }
         }
         //override ToString method
-        //override '+' to add two instances of the list class together ("hello" + "world" = "hello world" && 1 + 1 = 1,1)
+        public override string ToString()
+        {
+            string stringList = "";
+            for (int i = 0; i < myArray.Length; i++)
+            {
+                stringList += string.Concat(myArray[i]);
+            }
+            return stringList;
+        }
+        //override '+' to add two instances of the list class together ("hello" + "world" = "hello world" && 1 + 1 = 11)
         public static MyList<T> operator +(MyList<T> listOne, MyList<T> listTwo)
         {
             try
@@ -133,11 +142,6 @@ namespace ListClass
             }
             return list;
         }
-        // be able to iterate over the list
-        //IEnumerator IEnumerable.GetEnumerator()
-        //{
-        //    return GetEnumerator();
-        //}
         public IEnumerator GetEnumerator()
         {
             for (int i = 0; i < myArray.Length; i++)
