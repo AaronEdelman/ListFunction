@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ListClass
 {
-    public class MyList<T>
+    public class MyList<T> : IEnumerable//<T>
     {
         T[] myArray;
         int arrayCapacity = 0;
@@ -100,7 +100,51 @@ namespace ListClass
                 return count;
             }
         }
-        //create .zip that will combine two int lists and organize by value
+        //create .zip that will combine two lists
+        public MyList<T> Zip(MyList<T> myListTwo)
+        {
+            MyList<T> myListThree = new MyList<T> { };
+            int listCount = DetermineLongerList(myListTwo);
+            for (int i = 0; i < listCount; i++)
+            {
+                try
+                {
+                    myListThree.Add(myArray[i]);
+                }
+                catch { }
+                try
+                {
+                    myListThree.Add(myListTwo[i]);
+                }
+                catch { }
+            }
+            return myListThree;
+        }
+        private int DetermineLongerList(MyList<T>myListTwo)
+        {
+            int list = 0;
+            if(myArray.Length>= myListTwo.Count)
+            {
+                list = myArray.Length;
+            }
+            if(myArray.Length<myListTwo.Count)
+            {
+                list = myListTwo.Count;
+            }
+            return list;
+        }
+        // be able to iterate over the list
+        //IEnumerator IEnumerable.GetEnumerator()
+        //{
+        //    return GetEnumerator();
+        //}
+        public IEnumerator GetEnumerator()
+        {
+            for (int i = 0; i < myArray.Length; i++)
+            {
+                yield return myArray[i];
+            }
+        }
         //create .sort for list class (cannot use Array.Sort)
         public void Sort()
         {

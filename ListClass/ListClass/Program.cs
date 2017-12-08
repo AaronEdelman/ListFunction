@@ -11,7 +11,7 @@ namespace ListClass
         static void Main(string[] args)
         {
             SandBox sandbox = new SandBox();
-            sandbox.Subtract();
+            sandbox.ZipTest();
         }
     }
 }

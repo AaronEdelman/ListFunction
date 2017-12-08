@@ -11,13 +11,13 @@ namespace ListClass
         MyList<string> list1 = new MyList<string>();
         MyList<string> list2 = new MyList<string>();
 
-        public void Subtract()
+        public void ZipTest()
         {
-            list1.Add("foo");
-            list1.Add("bar");
-            list2.Add("bar");
-            MyList<string> list3 = list1 - list2;
-            Console.WriteLine("hello");
+            list1.Add("1");
+            list1.Add("3");
+            list2.Add("4");
+            MyList<string> list3 = list1.Zip(list2);
+            Console.WriteLine(list3[0] + list3[1] + list3[2]);
             Console.ReadLine();
         }
 
