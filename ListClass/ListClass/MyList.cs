@@ -7,10 +7,12 @@ using System.Threading.Tasks;
 
 namespace ListClass
 {
-    public class MyList<T> : IEnumerable
+    public class MyList<T> : IEnumerable , IComparable<T>
     {
         T[] myArray;
         int arrayCapacity = 0;
+        int myElement;
+        int myElementPlusOne;
         //constructor
         public MyList()
         {
@@ -142,6 +144,7 @@ namespace ListClass
             }
             return list;
         }
+        //create enumerator so that MyList is iterable.
         public IEnumerator GetEnumerator()
         {
             for (int i = 0; i < myArray.Length; i++)
@@ -149,10 +152,45 @@ namespace ListClass
                 yield return myArray[i];
             }
         }
-        //create .sort for list class (cannot use Array.Sort)
+        //create .sort for list class (cannot use Array.Sort ---- used bubble sort method)
         public void Sort()
         {
-
+            for (int i = 0; i < myArray.Length; i++)
+            {
+                for (int j = 0; j < myArray.Length; j++)
+                {
+                    try
+                    {
+                        myElement = Convert.ToInt32(myArray[j]);
+                        myElementPlusOne = Convert.ToInt32(myArray[j + 1]);
+                        if (myElement.CompareTo(myElementPlusOne) > 0)
+                        {
+                            T firstElement = myArray[j];
+                            T secondElement = myArray[j + 1];
+                            myArray[j] = secondElement;
+                            myArray[j + 1] = firstElement;
+                        }
+                    }
+                    catch
+                    { }
+                }
+            }
+        }
+        public int CompareTo(T other)
+        {
+            int otherInt = Convert.ToInt32(other);
+            if (myElement > otherInt)
+            {
+                return 1;
+            }
+            if (myElement < otherInt || myElement == otherInt)
+            {
+                return -1;
+            }
+            else
+            {
+                throw new Exception("HELP!!!");
+            }
         }
     }
 }

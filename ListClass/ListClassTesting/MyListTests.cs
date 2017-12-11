@@ -366,5 +366,57 @@ namespace ListClassTesting
             //Assert
             Assert.AreEqual(3, list.Count);
         }
+        [TestMethod]
+        public void Sort_IntList_OrderedList()
+        {
+            //Arrange
+            MyList<int> list = new MyList<int>();
+            list.Add(2);
+            list.Add(3);
+            list.Add(1);
+            //Act
+            list.Sort();
+            //Assert
+            Assert.AreEqual(1, list[0]);
+        }
+        [TestMethod]
+        public void Sort_StringList_OrderedList()
+        {
+            //Arrange
+            MyList<string> list = new MyList<string>();
+            list.Add("foo");
+            list.Add("bar");
+            list.Add("hello");
+            //Act
+            list.Sort();
+            //Assert
+            Assert.AreEqual("bar", list[0]);
+        }
+        [TestMethod]
+        public void Sort_IntList_NoChange()
+        {
+            //Arrange
+            MyList<int> list = new MyList<int>();
+            list.Add(1);
+            list.Add(2);
+            list.Add(3);
+            //Act
+            list.Sort();
+            //Assert
+            Assert.AreEqual(1, list[0]);
+        }
+        [TestMethod]
+        public void Sort_IntList_ListCount3()
+        {
+            //Arrange
+            MyList<int> list = new MyList<int>();
+            list.Add(2);
+            list.Add(3);
+            list.Add(1);
+            //Act
+            list.Sort();
+            //Assert
+            Assert.AreEqual(3, list.Count);
+        }
     }
 }
